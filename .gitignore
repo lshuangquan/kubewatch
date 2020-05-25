@@ -1,0 +1,6 @@
+.idea
+kubewatch
+.vscode
+.history
+__debug_bin
+.travis.yml

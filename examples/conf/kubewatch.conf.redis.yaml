@@ -1,0 +1,14 @@
+handler:
+  redis:
+    url: "redis://123456@47.52.107.40:6379/8"
+    ke-key: "mlaas-kubewatch"
+resource:
+  deployment: true
+  replicationcontroller: false
+  replicaset: false
+  daemonset: false
+  services: true
+  pod: true
+  job: true
+  persistentvolume: false
+  ingress: false
