@@ -4,7 +4,6 @@ go 1.13
 
 require (
 	github.com/GoogleCloudPlatform/spark-on-k8s-operator v0.0.0-20200406010359-e1d70afe9cb8
-	github.com/GoogleCloudPlatform/flink-on-k8s-operator
 	github.com/docker/distribution v2.7.1+incompatible // indirect
 	github.com/docker/docker v1.13.1 // indirect
 	github.com/docker/go-connections v0.4.0 // indirect

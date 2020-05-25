@@ -34,7 +34,7 @@ import (
 
 	sparkoperator_v1beta2 "github.com/GoogleCloudPlatform/spark-on-k8s-operator/pkg/apis/sparkoperator.k8s.io/v1beta2"
 	sparkoperator "github.com/GoogleCloudPlatform/spark-on-k8s-operator/pkg/client/clientset/versioned"
-	apps_v1beta1 "k8s.io/api/apps/v1beta1"
+	apps_v1 "k8s.io/api/apps/v1"
 	batch_v1 "k8s.io/api/batch/v1"
 	api_v1 "k8s.io/api/core/v1"
 	ext_v1beta1 "k8s.io/api/extensions/v1beta1"
@@ -221,13 +221,13 @@ func Start(conf *config.Config, eventHandler handlers.Handler) {
 		informer := cache.NewSharedIndexInformer(
 			&cache.ListWatch{
 				ListFunc: func(options meta_v1.ListOptions) (runtime.Object, error) {
-					return kubeClient.AppsV1beta1().Deployments(conf.Namespace).List(options)
+					return kubeClient.AppsV1().Deployments(conf.Namespace).List(options)
 				},
 				WatchFunc: func(options meta_v1.ListOptions) (watch.Interface, error) {
-					return kubeClient.AppsV1beta1().Deployments(conf.Namespace).Watch(options)
+					return kubeClient.AppsV1().Deployments(conf.Namespace).Watch(options)
 				},
 			},
-			&apps_v1beta1.Deployment{},
+			&apps_v1.Deployment{},
 			0, //Skip resync
 			cache.Indexers{},
 		)

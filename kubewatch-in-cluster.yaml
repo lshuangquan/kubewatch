@@ -1,3 +1,4 @@
+# 单pod运行
 apiVersion: v1
 kind: Pod
 metadata:
@@ -5,7 +6,7 @@ metadata:
   namespace: default
 spec:
   containers:
-  - image: tuna/kubewatch:v0.0.1
+  - image: piaobeizu2017/mlaas-kubewatch:v1.0
     imagePullPolicy: Always
     name: kubewatch
     volumeMounts:
@@ -16,3 +17,28 @@ spec:
   - name: config-volume
     configMap:
       name: kubewatch
+---
+# job运行
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kubewatch
+  namespace: mlaas-v2
+spec:
+  template:
+    metadata:
+      name: kubewatch
+    spec:
+      serviceAccountName: kubewatch
+      containers:
+      - image: piaobeizu2017/mlaas-kubewatch:v1.0
+        imagePullPolicy: Always
+        name: kubewatch
+        volumeMounts:
+        - name: kubewatch-config-volume
+          mountPath: /root
+      restartPolicy: OnFailure
+      volumes:
+      - name: kubewatch-config-volume
+        configMap:
+          name: kubewatch-config

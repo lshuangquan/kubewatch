@@ -41,11 +41,7 @@ type Handler struct {
 }
 
 type Kube struct {
-	KuboardUrl        string   `yaml:"kuboard_url"`
-	KuboardLogPath    string   `yaml:"kuboard_log_path"`
-	SubProtocolBinary string   `yaml:"sub_protocol_binary"`
-	SubProtocolToken  string   `yaml:"sub_protocol_token"`
-	PodLogFilters     []string `yaml:"pod_log_filters"`
+	PodLogFilters []string `yaml:"pod_log_filters"`
 }
 
 // Resource contains resource configuration

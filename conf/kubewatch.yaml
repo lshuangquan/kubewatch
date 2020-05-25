@@ -3,12 +3,9 @@ handler:
     url: "redis://123456@47.56.204.232:6379/8"
     ke-key: "kube_event_queue"
 kube:
-  kuboard_url: '47.56.204.232:32567'
-  kuboard_log_path: '/k8s-ws/api/v1/namespaces/%s/pods/%s/log'
-  sub_protocol_binary: 'base64.binary.k8s.io'
-  sub_protocol_token: 'base64url.bearer.authorization.k8s.io.'
   pod_log_filters:  # 监听pod日志的pod filter，正则表达式
     - "user-*"
+    - "."
 resource:
   deployment: true
   replicationcontroller: false
